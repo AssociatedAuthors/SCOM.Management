@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <WriteActionModuleType ID="SCOM.Management.UserRights.LogonAsService.WA" Accessibility="Internal" Batching="false">
+        <Configuration>
+          <xsd:element name="UserAccount" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"></xsd:element>
+          <xsd:element name="Action" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Grant" />
+                <xsd:enumeration value="Revoke" />
+                <xsd:enumeration value="Enumerate" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema"></xsd:element>
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="UserAccount" Selector="$Config/UserAccount$" ParameterType="string" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>SCOM.Management.UserRights.LogonAsService.WA.ps1</ScriptName>
+                <ScriptBody>$IncludeFileContent/WriteActions/UserRights.LogonAsService.WA.ps1$</ScriptBody>
+                <Parameters>
+                  <Parameter>
+                    <Name>UserAccount</Name>
+                    <Value>$Config/UserAccount$</Value>
+                  </Parameter>
+                  <Parameter>
+                    <Name>Action</Name>
+                    <Value>$Config/Action$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+                <StrictErrorHandling>true</StrictErrorHandling>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <OutputType>System!System.BaseData</OutputType>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+
+</ManagementPackFragment>

@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/SCOM.Management/.vs/SCOM.Management/v15/.suo
+/SCOM.Management/SCOM.Management/bin/Debug/SCOM.Management.pdb
+/SCOM.Management/SCOM.Management/bin/Debug/SCOM.Management.mpb
+/SCOM.Management/SCOM.Management/obj/Debug/SCOM.Management.xml
+/SCOM.Management/SCOM.Management/obj/Debug/SCOM.Management.mpprojAssemblyReference.cache
+/SCOM.Management/SCOM.Management/obj/Debug

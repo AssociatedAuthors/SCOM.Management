@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <Monitoring>
+    <Tasks>
+      <Task ID="SCOM.Management.UserRights.LogonAsService.Revoke.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.UserRights.LogonAsService.WA">
+          <UserAccount></UserAccount>
+          <Action>Revoke</Action>
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+    </Tasks>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="SCOM.Management.UserRights.LogonAsService.Revoke.Task">
+          <Name>Log on As Service - Revoke user right</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

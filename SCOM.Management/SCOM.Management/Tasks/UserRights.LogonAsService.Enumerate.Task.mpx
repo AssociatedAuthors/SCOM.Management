@@ -1,0 +1,21 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Tasks>
+      <Task ID="SCOM.Management.UserRights.LogonAsService.Enumerate.Task" Accessibility="Public" Enabled="true" Target="SCOM.Management.Agent.Class" Timeout="120" Remotable="true">
+        <Category>Custom</Category>
+        <WriteAction ID="PSWA" TypeID="SCOM.Management.UserRights.LogonAsService.Enumerate.WA">
+          <TimeoutSeconds>60</TimeoutSeconds>
+        </WriteAction>
+      </Task>
+    </Tasks>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="SCOM.Management.UserRights.LogonAsService.Enumerate.Task">
+          <Name>Log on As Service - Enumerate user rights</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
